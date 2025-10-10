@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./source/style.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <main class="app">
+      <section class="controls">
+        <form class="form form_create" id="formCreateCategory">
+          <div class="form_field">
+            <label class="form_label" for="newCategory"
+              >Создайте категорию</label
+            >
+            <input
+              class="input"
+              type="text"
+              placeholder="Покупки"
+              id="newCategory"
+            />
+          </div>
+          <button
+            class="btn btn_primary"
+            type="submit"
+            id="btnCreateCategory"
+            disabled
+          >
+            Создать
+          </button>
+        </form>
+
+        <form class="form form_category" id="formAddTask">
+          <div class="form_field">
+            <label class="form_label" for="selectCategory"
+              >Выберите категорию</label
+            >
+            <select class="select" name="selectCategory" id="selectCategory">
+              <option value="home">Home</option>
+            </select>
+          </div>
+          <div class="form_field">
+            <label class="form_label" for="newTask">Опишите задачу</label>
+            <input
+              class="input"
+              type="text"
+              placeholder="Задачу"
+              id="newTask"
+            />
+          </div>
+          <button
+            class="btn btn_primary"
+            type="submit"
+            id="btnCreateTask"
+            disabled
+          >
+            Создать
+          </button>
+        </form>
+
+        <form class="form form_remove" id="formRemoveCategory">
+          <div class="form_field">
+            <label class="form_label" for="deleteCategory"
+              >Удалить категорию</label
+            >
+            <select class="select" name="deleteCategory" id="deleteCategory">
+              <option value="home">Home</option>
+            </select>
+          </div>
+          <button
+            class="btn btn_remove"
+            type="submit"
+            id="btnDeleteCategory"
+            disabled
+          >
+            Удалить
+          </button>
+        </form>
+      </section>
+
+      <h1 class="app_title">Список дел</h1>
+
+      <section class="category_list" id="categoryList"></section>
+
+      <!-- <article class="category" data-id="">
+        <header class="category_header">
+          <h2 class="category_title" data-role="cat_title"></h2>
+          <div class="category_actions">
+            <button class="btn btn-ghost" data-action="rename_cat" aria-label="rename category"><img src="./icons/edit.svg" alt="edit"></button>
+             <button class="btn btn-ghost" data-action="toggle" aria-expanded="${expanded}" aria-controls=""><img src="./icons/down-white.svg" alt="toggle"></button>
+          </div>
+          <div class="category_body" id="">
+            <ul class="task_list"></ul>
+          </div>
+        </header>
+      </article> -->
+
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
