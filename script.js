@@ -283,23 +283,59 @@ const view = () => {
 
   //шаблон одной категории с задачами
   function renderCategory(category) {
-    const collapsed = !!model.getState().meta.collapsedByCategoryId[category.id]
+    const collapsed =
+      !!model.getState().meta.collapsedByCategoryId[category.id];
     //это сост-е нащей отрендер=ой кат-ии в зависи-ти от соc-я collapsed
     //не не true вернет true - это двлйное отриц-е
-    const tasks = model.getTasksByCategories(category.id)
-    const bodyHidden = collapsed ? ' hidden' : ''
-    const expanded = collapsed ? 'false' : 'true'
+    const tasks = model.getTasksByCategories(category.id);
+    const bodyHidden = collapsed ? " hidden" : "";
+    const expanded = collapsed ? "false" : "true";
     return `
-    
-    `
+      <article class="category" data-id="${category.id}">
+        <header class="category_header">
+          <h2 class="category_title" data-role="cat_title">${utils.escapeHTML(
+            category.name
+          )}</h2>
+          <div class="category_actions">
+            <button class="btn btn-ghost" data-action="rename_cat" aria-label="rename category"><img src="./icons/edit.svg" alt="edit"></button>
+             <button class="btn btn-ghost" data-action="toggle" aria-expanded="${expanded}" aria-controls="body_${
+      category.id
+    }"><img src="./icons/down-white.svg" alt="toggle"></button>
+          </div>
+          <div class="category_body" ${bodyHidden} id="body_${category.id}">
+            <ul class="task_list">${tasks.map(renderTask).join("")}</ul>
+          </div>
+        </header>
+      </article>
+    `;
   }
   //шаблон одной строки с задачей
-  function renderTask() {
-
+  function renderTask(task) {
+    const doneClass = task.done ? " task-done" : "";
+    return `
+    <li class="task${doneClass}" data-id="${task.id}">
+  <input class="task-check" type="checkbox" ${
+    task.done ? "checked" : ""
+  } aria-label="checked done">
+  <div class="task-title" data-role="task-title"> ${utils.escapeHTML(task.title)}</div> 
+  <div class="task-actions"></div>
+  <button class="btn btn-ghost" data-action="rename_task" aria-label="rename task"><img src="./icons/edit.svg" alt="edit"></button>
+  <button class="btn btn-ghost" data-action="delete_task" aria-label="delete task"><img src="./icons/delete.svg" alt="toggle"></button>
+</li>
+    `;
   }
-
   //точечно переписать одну категорию по id
-  function updateCategory(id) {}
+  function updateCategory(id) {
+  const cat = model.getCategories().find((item) => item.id === id )
+  const node = elm.categoryList.querySelector(`.category[data-id="${id}"]`)
+  //реализует поиск нужн эл-та в списке по атрибуту data-id
+  //`.category[data-id="${id}"]` это класс
+  if(!cat || !node){
+    return renderCategoryList(model.getState())
+  }
+  node.outerHTML = renderCategory(cat)
+  //html распр-ся на каких-то потомков !!! надо загуглить
+}
 
   //переписать одну задачу по id по узлу (весь элемент)
   function updateTaskRow() {}

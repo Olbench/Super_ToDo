@@ -88,7 +88,18 @@
 
       <section class="category_list" id="categoryList"></section>
 
-      <!-- <article class="category" data-id="">
+<li class="task${doneClass}" data-id="${task.id}">
+  <input class="task-check" type="checkbox" ${task.done ? "checked" : ""} aria-label="checked done">
+  <div class="task-title" data-role="task-title"></div> 
+  <div class="task-actions"></div>
+  <button class="btn btn-ghost" data-action="rename_task" aria-label="rename task"><img src="./icons/edit.svg" alt="edit"></button>
+  <button class="btn btn-ghost" data-action="delete_task" aria-label="delete task"><img src="./icons/delete.svg" alt="toggle"></button>
+</li>
+
+
+
+<!-- 
+      <article class="category" data-id="">
         <header class="category_header">
           <h2 class="category_title" data-role="cat_title"></h2>
           <div class="category_actions">
