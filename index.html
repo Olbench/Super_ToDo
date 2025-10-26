@@ -25,6 +25,7 @@
               placeholder="Покупки"
               id="newCategory"
             />
+            <p class="form_error" id="newCategoryError" role="alert" aria-live="polite"></p>
           </div>
           <button
             class="btn btn_primary"
@@ -53,6 +54,7 @@
               placeholder="Задачу"
               id="newTask"
             />
+            <p class="form_error" id="newTaskError" role="alert" aria-live="polite"></p>
           </div>
           <button
             class="btn btn_primary"
@@ -88,31 +90,22 @@
 
       <section class="category_list" id="categoryList"></section>
 
-<li class="task${doneClass}" data-id="${task.id}">
-  <input class="task-check" type="checkbox" ${task.done ? "checked" : ""} aria-label="checked done">
-  <div class="task-title" data-role="task-title"></div> 
-  <div class="task-actions"></div>
-  <button class="btn btn-ghost" data-action="rename_task" aria-label="rename task"><img src="./icons/edit.svg" alt="edit"></button>
-  <button class="btn btn-ghost" data-action="delete_task" aria-label="delete task"><img src="./icons/delete.svg" alt="toggle"></button>
-</li>
+      <footer class="app__footer">
+            <button class="btn btn--ghost" id="wipeAll" type="button">Сбросить всё</button>
+      </footer>
 
-
-
-<!-- 
-      <article class="category" data-id="">
-        <header class="category_header">
-          <h2 class="category_title" data-role="cat_title"></h2>
-          <div class="category_actions">
-            <button class="btn btn-ghost" data-action="rename_cat" aria-label="rename category"><img src="./icons/edit.svg" alt="edit"></button>
-             <button class="btn btn-ghost" data-action="toggle" aria-expanded="${expanded}" aria-controls=""><img src="./icons/down-white.svg" alt="toggle"></button>
+      <div class="banner" id="errorBanner" hidden role="alert"></div>
+      <div class="modal" id="confirmModal" role="dialog" aria-modal="true">
+        <div class="modal_dialog" role="document">
+          <div class="modal_body" id="confirmMessage"></div>
+          <div class="modal_actions">
+            <button class="btn btn--danger" id="confirmYes" type="button">Удалить</button>
+            <button class="btn btn--ghost" id="confirmNo" type="button">Отмена</button>
           </div>
-          <div class="category_body" id="">
-            <ul class="task_list"></ul>
-          </div>
-        </header>
-      </article> -->
-
+        </div>
+      </div>
     </main>
+      
     <script src="./script.js"></script>
   </body>
 </html>

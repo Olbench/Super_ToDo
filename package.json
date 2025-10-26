@@ -1,7 +1,7 @@
 {
   "name": "super-todo-list",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. Инициируем проект с помощью команды npm init -y (создается описание вашего проекта, его зависимости и скрипты) 2. создаем скрипт для компиляции scss в css     \"sass\": \"sass --watch ./styles/style.scss ./source/style.css\" 3. Запускаем данную команду через  npm run sass Теперь при сохранении sass файла будет происходить автоматическая компиляция",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,5 +9,22 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.93.2"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "immutable": "^5.1.4",
+    "source-map-js": "^1.2.1",
+    "readdirp": "^4.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olbench/Super_ToDo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Olbench/Super_ToDo/issues"
+  },
+  "homepage": "https://github.com/Olbench/Super_ToDo#readme"
 }

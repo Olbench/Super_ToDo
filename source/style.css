@@ -107,6 +107,128 @@ body {
 .select {
   appearance: none;
   background: url("../icons/down-white.svg") no-repeat right 12px center/15px, rgba(0, 0, 0, 0.18);
+  padding-right: 34px;
+}
+
+.category_list {
+  margin-top: 8px;
+  display: grid;
+  gap: 12px;
+}
+
+.category {
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.category_header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  background: #057d7b;
+  color: #ffffff;
+  padding: 14px 16px;
+}
+
+.category_title {
+  font-weight: 700;
+}
+
+.category_actions {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.category_body {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0;
+  max-height: 800px;
+  transition: max-height 0.25s ease;
+}
+
+.category_body[hidden] {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.task_list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.task + .task {
+  margin-top: 6px;
+}
+
+.task-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-done .task-title {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-actions {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 16px;
+}
+
+.modal_dialog {
+  width: 100%;
+  max-width: 420px;
+  background: #057d7b;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.modal_actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  background: #7a1d1d;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 /*# sourceMappingURL=style.css.map */
