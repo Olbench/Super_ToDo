@@ -557,13 +557,52 @@ const controller = (() => {
 
 // небольшие вспомогательные функции интерфейса (баннеры, вспомогательные функции)
 const ui = () => {
+  const banner = document.getElementById('errorBanner')
+  const modal = document.getElementById('confirmModal')
+  const msgEl = document.getElementById('confirmMessage')
+  const yes = document.getElementById('confirmYes')
+  const no = document.getElementById('confirmNo')
   // подтверждение и вернуть Promise
-  function confirm() { }
-  // показать баннер
-  function showBanner() { }
+  function confirm(msg) {
+    msgEl.textContent = msg
+    modal.hidden = false
+    return new Promise((resolve) => {
+      function done(value){
+        modal.hidden = true.hidden
+        yes.removeEventListener('click', onYes)
+        no.removeEventListener('click', onNo)
+        modal.removeEventListener('keydown', onKey)
+        resolve(value)
+      }
+      function onYes(){
+        done(true)
+      }
+      function onNo(){
+        done(false)
+      }
+      function onKey(e){
+        if(e.key === 'Escape') done(false)
+      }
+      yes.addEventListener('click', onYes)//передаем ф-ю в виду параметра 
+      no.addEventListener('click', onNo)
+      modal.addEventListener('keydown', onKey)
 
-  return { confirm, showBanner }
-}
+      yes.focus()
+
+
+    })
+  }
+  // показать баннер
+  function showBanner(text) {
+    banner.textContent = text
+    banner.hidden = false
+    setTimeout(() => {
+      banner.hidden = true
+    },3000)
+  }
+
+  return { confirm, showBanner };
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   controller.init()
